@@ -1,0 +1,26 @@
+UPDATE CPTCODEKEY
+SET cpt88309 = 88309
+WHERE CPTCODEKEY.RESULTKEY IN
+(
+SELECT DISTINCT resultKey
+FROM ResultSection
+
+
+WHERE 
+(
+sectionValue LIKE '%88309%'
+
+
+)
+AND
+(
+sectionCategory LIKE '%COMMENT%'
+OR sectionCategory LIKE '%PATHOLOG%'
+OR sectionCategory LIKE '%SPECIMEN%'
+OR sectionCategory LIKE '%DESC%'
+)
+)
+
+UPDATE CPTCODEKEY
+SET cpt88309 = 0
+WHERE cpt88309 IS NULL
